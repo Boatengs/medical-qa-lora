@@ -7,17 +7,13 @@ Trained entirely for free on Google Colab T4 GPU.
 [![Python](https://img.shields.io/badge/Python-3.12-blue)](https://python.org)
 [![Colab](https://img.shields.io/badge/Trained%20on-Google%20Colab-orange)](https://colab.research.google.com)
 
----
-
 ## 🎯 Results
 
 | Step | Train Loss | Val Loss |
 |------|-----------|----------|
 | 100  | 0.6992    | 0.6814   |
 | 200  | 0.6724    | 0.6647   |
-| 300  | 0.6792    | **0.6573** |
-
----
+| 300  | 0.6792    | 0.6573   |
 
 ## 🏗️ Architecture
 
@@ -26,14 +22,14 @@ Trained entirely for free on Google Colab T4 GPU.
 | Base Model | Mistral-7B-Instruct-v0.3 |
 | Fine-tuning | LoRA (rank=16, alpha=32) |
 | Quantization | 4-bit QLoRA via bitsandbytes |
-| Dataset | Medical Meadow Flashcards |
-| Framework | HuggingFace PEFT + TRL |
+| Dataset | Medical Meadow Flashcards (5,000 examples) |
+| Trainable Params | 13.6M / 3.7B (0.36%) |
 | Hardware | T4 GPU — Google Colab Free |
 | Cost | $0 |
 
----
-
 ## ⚡ Quick Start
+
+```python
 
 ```python
 from peft import PeftModel
@@ -62,8 +58,6 @@ outputs = model.generate(**inputs, max_new_tokens=200, temperature=0.1, do_sampl
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
----
-
 ## 📊 Sample Outputs
 
 **Q: What is the mechanism of action of beta blockers?**
@@ -75,20 +69,16 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 **Q: What are the symptoms of diabetic ketoacidosis?**
 > Symptoms include nausea, vomiting, and abdominal pain.
 
----
-
 ## 🔍 Key Technical Decisions
 
 **Why LoRA over full fine-tuning?**
 Only 0.36% of parameters are trainable (13.6M / 3.7B), making it feasible on free hardware with no quality loss.
 
 **Why 4-bit quantization?**
-Reduces model from ~14GB to ~3.5GB VRAM — enabling T4 GPU training for free.
+Reduces model from 14GB to 3.5GB VRAM — enabling free T4 GPU training.
 
 **Why Mistral 7B?**
-Ungated, strong medical reasoning, and outperforms Llama 3.2 3B on QA tasks.
-
----
+Ungated, strong medical reasoning, outperforms Llama 3.2 3B on QA tasks.
 
 ## ⚠️ Limitations
 
@@ -96,11 +86,8 @@ Ungated, strong medical reasoning, and outperforms Llama 3.2 3B on QA tasks.
 - Not validated for clinical use
 - Should not replace professional medical advice
 
----
-
 ## 🔗 Links
 
 - [Model on HuggingFace Hub](https://huggingface.co/samboateng190/medical-mistral-lora)
 - [Project 1 — Sentiment Analyzer](https://github.com/Boatengs/sentiment-analyzer)
 - [Project 2 — SPORTZBOT RAG Chatbot](https://github.com/Boatengs/sports-rag-chatbot-)
-- [My Portfolio](#)
