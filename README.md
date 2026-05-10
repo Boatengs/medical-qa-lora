@@ -1,13 +1,13 @@
-# 🏥 Medical QA LLM — LoRA Fine-tuning
+#  Medical QA LLM — LoRA Fine-tuning
 
 Fine-tuned Mistral 7B on 5,000 medical QA examples using LoRA + 4-bit QLoRA.
 Trained entirely for free on Google Colab T4 GPU.
 
-[![HuggingFace](https://img.shields.io/badge/🤗%20Model-HuggingFace%20Hub-yellow)](https://huggingface.co/samboateng190/medical-mistral-lora)
+[![HuggingFace](https://img.shields.io/badge/%20Model-HuggingFace%20Hub-yellow)](https://huggingface.co/samboateng190/medical-mistral-lora)
 [![Python](https://img.shields.io/badge/Python-3.12-blue)](https://python.org)
 [![Colab](https://img.shields.io/badge/Trained%20on-Google%20Colab-orange)](https://colab.research.google.com)
 
-## 🎯 Results
+##  Results
 
 | Step | Train Loss | Val Loss |
 |------|-----------|----------|
@@ -15,7 +15,7 @@ Trained entirely for free on Google Colab T4 GPU.
 | 200  | 0.6724    | 0.6647   |
 | 300  | 0.6792    | 0.6573   |
 
-## 🏗️ Architecture
+##  Architecture
 
 | Component | Choice |
 |-----------|--------|
@@ -58,7 +58,7 @@ outputs = model.generate(**inputs, max_new_tokens=200, temperature=0.1, do_sampl
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
-## 📊 Sample Outputs
+##  Sample Outputs
 
 **Q: What is the mechanism of action of beta blockers?**
 > Beta blockers work by blocking beta-adrenergic receptors, reducing heart rate, lowering blood pressure, and improving blood flow. Used for hypertension, angina, and heart failure.
@@ -69,7 +69,7 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 **Q: What are the symptoms of diabetic ketoacidosis?**
 > Symptoms include nausea, vomiting, and abdominal pain.
 
-## 🔍 Key Technical Decisions
+##  Key Technical Decisions
 
 **Why LoRA over full fine-tuning?**
 Only 0.36% of parameters are trainable (13.6M / 3.7B), making it feasible on free hardware with no quality loss.
@@ -80,13 +80,13 @@ Reduces model from 14GB to 3.5GB VRAM — enabling free T4 GPU training.
 **Why Mistral 7B?**
 Ungated, strong medical reasoning, outperforms Llama 3.2 3B on QA tasks.
 
-## ⚠️ Limitations
+##  Limitations
 
 - Trained on flashcard-style QA only
 - Not validated for clinical use
 - Should not replace professional medical advice
 
-## 🔗 Links
+##  Links
 
 - [Model on HuggingFace Hub](https://huggingface.co/samboateng190/medical-mistral-lora)
 - [Project 1 — Sentiment Analyzer](https://github.com/Boatengs/sentiment-analyzer)
