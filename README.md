@@ -3,7 +3,7 @@
 Fine-tuned Mistral 7B on 5,000 medical QA examples using LoRA + 4-bit QLoRA.
 Trained entirely for free on Google Colab T4 GPU.
 
-[![HuggingFace](https://img.shields.io/badge/%20Model-HuggingFace%20Hub-yellow)](https://huggingface.co/samboateng190/medical-mistral-lora)
+[![HuggingFace](https://img.shields.io/badge/%20Model-HuggingFace%20Hub-yellow)](https://huggingface.co/samurvivor-07/medical-mistral-lora)
 [![Python](https://img.shields.io/badge/Python-3.12-blue)](https://python.org)
 [![Colab](https://img.shields.io/badge/Trained%20on-Google%20Colab-orange)](https://colab.research.google.com)
 
@@ -37,7 +37,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import torch
 
 model_name = "mistralai/Mistral-7B-Instruct-v0.3"
-adapter    = "samboateng190/medical-mistral-lora"
+adapter    = "samurvivor-07/medical-mistral-lora"
 
 bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16)
 tokenizer  = AutoTokenizer.from_pretrained(model_name)
@@ -88,6 +88,6 @@ Ungated, strong medical reasoning, outperforms Llama 3.2 3B on QA tasks.
 
 ##  Links
 
-- [Model on HuggingFace Hub](https://huggingface.co/samboateng190/medical-mistral-lora)
+- [Model on HuggingFace Hub](https://huggingface.co/samurvivor-07/medical-mistral-lora)
 - [Project 1 — Sentiment Analyzer](https://github.com/Boatengs/sentiment-analyzer)
 - [Project 2 — SPORTZBOT RAG Chatbot](https://github.com/Boatengs/sports-rag-chatbot-)
