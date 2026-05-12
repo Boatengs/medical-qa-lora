@@ -27,7 +27,7 @@ Trained entirely for free on Google Colab T4 GPU.
 | Hardware | T4 GPU — Google Colab Free |
 | Cost | $0 |
 
-## ⚡ Quick Start
+##  Quick Start
 
 ```python
 
