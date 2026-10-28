@@ -30,8 +30,6 @@ Trained entirely for free on Google Colab T4 GPU.
 ##  Quick Start
 
 ```python
-
-```python
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import torch
