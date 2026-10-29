@@ -87,5 +87,6 @@ Ungated, strong medical reasoning, outperforms Llama 3.2 3B on QA tasks.
 ##  Links
 
 - [Model on HuggingFace Hub](https://huggingface.co/samurvivor-07/medical-mistral-lora)
+  (Saved cell output in the notebook shows the earlier Hugging Face username, samboateng190. The current address is the one above.)
 - [Project 1 — Sentiment Analyzer](https://github.com/Boatengs/sentiment-analyzer)
 - [Project 2 — SPORTZBOT RAG Chatbot](https://github.com/Boatengs/sports-rag-chatbot-)
