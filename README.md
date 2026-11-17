@@ -23,7 +23,7 @@ Trained entirely for free on Google Colab T4 GPU.
 | Fine-tuning | LoRA (rank=16, alpha=32) |
 | Quantization | 4-bit QLoRA via bitsandbytes |
 | Dataset | Medical Meadow Flashcards (5,000 examples) |
-| Trainable Params | 13.6M / 3.7B (0.36%) |
+| Trainable Params | 13.6M of about 7.25B (about 0.19%) |
 | Hardware | T4 GPU — Google Colab Free |
 | Cost | $0 |
 
@@ -70,13 +70,20 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ##  Key Technical Decisions
 
 **Why LoRA over full fine-tuning?**
-Only 0.36% of parameters are trainable (13.6M / 3.7B), making it feasible on free hardware with no quality loss.
+Only about 0.19% of parameters are trainable (13.6M of about 7.25B), which made training feasible on free hardware. The 0.36% figure in the original notebook divided by 3.7B, the count PyTorch reports for a 4 bit model, where two weights are packed into each stored value.
 
 **Why 4-bit quantization?**
 Reduces model from 14GB to 3.5GB VRAM — enabling free T4 GPU training.
 
 **Why Mistral 7B?**
 Ungated, strong medical reasoning, outperforms Llama 3.2 3B on QA tasks.
+
+##  Independent evaluation
+
+The [LLM Evaluation Framework](https://github.com/Boatengs/llm-evaluation-framework) (version 2) tested this adapter against the base model on 300 held-out flashcards and 945 MMLU medical questions:
+
+- Held-out flashcards: average ROUGE F1 0.273 to 0.421 and embedding similarity 0.802 to 0.848 with the same prompt. The gain is mostly answer style: ROUGE-L precision 0.294 to 0.600, recall unchanged (0.458 to 0.457), median answer 15.5 words against 72.5.
+- MMLU medical multiple choice: accuracy fell from 65.2% to 61.2% (McNemar p = 0.002), so fine tuning cost some general medical knowledge.
 
 ##  Limitations
 
